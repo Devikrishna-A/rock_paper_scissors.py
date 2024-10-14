@@ -1,0 +1,48 @@
+import random
+def display_rules():
+    print("\nInstructions to play:")
+    print("Two players will each randomly choose one of three: Rock, Paper, Scissors.")
+    print("Here are the rules that determine which sign beats another:")
+    print("\nRock beats Scissors")
+    print("Scissors beat Paper")
+    print("Paper beats Rock")
+
+def get_user_choice():
+    print("\nMenu:")
+    print("1. Rock")
+    print("2. Paper")
+    print("3. Scissors")
+    return input("Enter '1' for Rock, '2' for Paper, or '3' for Scissors: ")
+
+def winner(player, computer):
+    if (player == '1' and computer == 'Rock') or (player == '2' and computer == 'Paper') or (player == '3' and computer == 'Scissors'):
+        return "It's a tie!"
+    elif (player == '1' and computer == 'Scissors') or (player == '2' and computer == 'Rock') or (player == '3' and computer == 'Paper'):
+        return "YOU WON! CONGRATS!"
+    else:
+        return "Oops! Computer won. Better luck next time!"
+
+def play_game():
+    print("Welcome to the virtual game of Rock, Paper, Scissors!")
+    display_rules()
+    
+    options = ["Rock", "Paper", "Scissors"]
+
+    while True:
+        us_ch = get_user_choice()
+        if us_ch in ["1", "2", "3"]:
+            com_ch = random.choice(options)
+            print("Computer chose:", com_ch)
+            result = winner(us_ch, com_ch)
+            print(result)
+        else:
+            print("Please select a choice from '1' to '3'.")
+
+        o = input("Want to try again? Type '1' for yes and '2' for no: ")
+        if o == '2':
+            print("\nThank you for playing!")
+            break
+        elif o != '1':
+            print("Please select a value of either '1' or '2' for yes or no.")
+
+play_game()
